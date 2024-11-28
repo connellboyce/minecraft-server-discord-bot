@@ -67,7 +67,7 @@ async def mcstatus(ctx):
         await ctx.send(f"An error occurred: {e}")
 
 
-# keepAlive()
+keepAlive()
 
 # Run the bot
 bot.run(BOT_TOKEN)
