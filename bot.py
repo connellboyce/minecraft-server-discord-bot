@@ -8,6 +8,7 @@ from keep_alive import keepAlive
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 BASE_URL = os.getenv('BASE_URL')
+START_ENDPOINT = BASE_URL + "/start"
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -20,14 +21,14 @@ async def on_ready():
 
 
 @bot.command()
-async def commandname(ctx):
+async def mcstart(ctx):
     # Make an API request
     try:
-        response = requests.post(BASE_URL)
+        response = requests.post(START_ENDPOINT)
         if response.status_code == 200:
             await ctx.send(response.text)
         else:
-            await ctx.send("Failed to reach API.")
+            await ctx.send("Failed to reach the server manager job. If this continues, notify an admin.")
     except Exception as e:
         await ctx.send(f"An error occurred: {e}")
 
